@@ -43,9 +43,11 @@ export default function LoginPage() {
 				const id = email.trim().toLowerCase();
 				if (id === "admin@gmail.com" && password === "12345678") {
 					setSuccess("Login admin terverifikasi — mengalihkan ke dashboard admin...");
+					// Set authentication state
+					localStorage.setItem('isAuthenticated', 'true');
 					setTimeout(() => {
 						try {
-							router.push("/dashboard/admin/page/manageclient");
+							router.replace("/dashboard/admin/page/manageclient");
 						} catch {
 							setSuccess(null);
 						}
@@ -58,7 +60,7 @@ export default function LoginPage() {
 			// small delay then navigate ke dashboard biasa
 			setTimeout(() => {
 				try {
-					router.push("/dashboard");
+					router.push("/dashboard/admin/page/manageclient");
 				} catch {
 					setSuccess(null);
 				}
