@@ -2,8 +2,66 @@
 
 import { useState } from "react";
 
+interface TimelineItem {
+  date: string;
+  title: string;
+  description: string;
+  story?: string;
+}
+
+interface RegistryItem {
+  name: string;
+  price: string;
+  image?: string;
+  link?: string;
+}
+
+
+
+interface Client {
+  id: string;
+  name: string;
+  phone: string;
+  subscription: string;
+  theme: string;
+  expiry: string;
+  addons: string;
+  hasReceptionist: boolean;
+  active: boolean;
+  // Extended properties for wedding details
+  email?: string;
+  weddingDate?: string;
+  venue?: string;
+  maleName?: string;
+  femaleName?: string;
+  maleParents?: string;
+  femaleParents?: string;
+  maleSocialMedia?: string;
+  femaleSocialMedia?: string;
+  openingWords?: string;
+  closingWords?: string;
+  ceremonyDate?: string;
+  ceremonyTime?: string;
+  ceremonyVenue?: string;
+  ceremonyMaps?: string;
+  receptionDate?: string;
+  receptionTime?: string;
+  receptionVenue?: string;
+  receptionMaps?: string;
+  dressCodeColor1?: string;
+  dressCodeColor2?: string;
+  backgroundMusic?: string;
+  timeline?: TimelineItem[];
+  registry?: RegistryItem[];
+  photos?: string[];
+  gallery?: string[];
+  bankAccounts?: string[];
+  giftAddress?: string;
+  giftPhone?: string;
+}
+
 interface Props {
-  client: any; // Will be typed properly once we have the full data structure
+  client: Client;
   onClose: () => void;
 }
 
@@ -84,7 +142,7 @@ export default function ClientInfoModal({ client, onClose }: Props) {
               </Section>
 
               <Section title="Timeline Cinta" icon="❤️">
-                {client.timeline?.map((item: any, index: number) => (
+                {client.timeline?.map((item: TimelineItem, index: number) => (
                   <div key={index} className="relative pl-8 pb-8 last:pb-0">
                     <div className="absolute left-0 top-0 h-full w-0.5 bg-indigo-200">
                       <div className="absolute -left-1.5 top-2 h-4 w-4 rounded-full bg-indigo-600"></div>
@@ -189,7 +247,7 @@ export default function ClientInfoModal({ client, onClose }: Props) {
 
               <Section title="Wedding Registry" icon="🎁">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {client.registry?.map((item: any, index: number) => (
+                  {client.registry?.map((item: RegistryItem, index: number) => (
                     <div key={index} className="bg-gray-50 dark:bg-slate-700 rounded-lg p-4">
                       <div className="aspect-square rounded-lg bg-gray-100 dark:bg-slate-600 mb-3">
                         <img

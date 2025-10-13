@@ -47,7 +47,7 @@ export default function LoginPage() {
 					localStorage.setItem('isAuthenticated', 'true');
 					setTimeout(() => {
 						try {
-							router.replace("/dashboard/admin/page/manageclient");
+							router.replace("/dashboard/admin/page/management-client/manageclient");
 						} catch {
 							setSuccess(null);
 						}
@@ -60,7 +60,7 @@ export default function LoginPage() {
 			// small delay then navigate ke dashboard biasa
 			setTimeout(() => {
 				try {
-					router.push("/dashboard/admin/page/manageclient");
+					router.push("/dashboard/admin/page/management-client/manageclient");
 				} catch {
 					setSuccess(null);
 				}
