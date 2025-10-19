@@ -45,9 +45,42 @@ export default function LoginPage() {
 					setSuccess("Login admin terverifikasi — mengalihkan ke dashboard admin...");
 					// Set authentication state
 					localStorage.setItem('isAuthenticated', 'true');
+					localStorage.setItem('userRole', 'admin');
 					setTimeout(() => {
 						try {
 							router.replace("/dashboard/admin/page/management-client/manageclient");
+						} catch {
+							setSuccess(null);
+						}
+					}, 600);
+					return;
+				}
+
+				// simple staf shortcut: kredensial staf yang ditentukan
+				if (id === "staf@gmail.com" && password === "12345678") {
+					setSuccess("Login staf terverifikasi — mengalihkan ke dashboard staf...");
+					// Set authentication state
+					localStorage.setItem('isAuthenticated', 'true');
+					localStorage.setItem('userRole', 'staf');
+					setTimeout(() => {
+						try {
+							router.replace("/dashboard/staf/page/management-client/manageclient");
+						} catch {
+							setSuccess(null);
+						}
+					}, 600);
+					return;
+				}
+
+				// simple client shortcut: kredensial client yang ditentukan
+				if (id === "client@gmail.com" && password === "12345678") {
+					setSuccess("Login client terverifikasi — mengalihkan ke dashboard client...");
+					// Set authentication state
+					localStorage.setItem('isAuthenticated', 'true');
+					localStorage.setItem('userRole', 'client');
+					setTimeout(() => {
+						try {
+							router.replace("/dashboard/client");
 						} catch {
 							setSuccess(null);
 						}
@@ -80,6 +113,16 @@ export default function LoginPage() {
 					</div>
 					<h2 className="text-2xl font-semibold">Dashboard Undangan</h2>
 					<p className="mt-3 text-sm opacity-90 text-white/90 max-w-xs text-center">Masuk untuk mengatur undangan digital Anda. Desain modern, responsif, dan fokus pada pengalaman pengguna.</p>
+					
+					{/* Test Credentials */}
+					<div className="mt-8 p-4 bg-white/10 rounded-lg text-sm">
+						<h3 className="font-semibold mb-2">Test Credentials:</h3>
+						<div className="space-y-1">
+							<div>Admin: admin@gmail.com / 12345678</div>
+							<div>Staf: staf@gmail.com / 12345678</div>
+							<div>Client: client@gmail.com / 12345678</div>
+						</div>
+					</div>
 				</div>
 
 				{/* Right / form */}
